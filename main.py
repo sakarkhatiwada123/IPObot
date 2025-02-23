@@ -25,7 +25,13 @@ credentials = read_credentials("credentials.txt")   # Read credentials
 
 # Selenium setup
 options = Options()
+<<<<<<< HEAD
 options.add_experimental_option("detach", True)
+=======
+#options.add_experimental_option("detach", True)
+options.add_argument("--headless")  #headless mode
+options.add_argument("--disable-gpu")   #stability for headless mode
+>>>>>>> 1c38537 (Updated main.py)
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get("https://meroshare.cdsc.com.np/#/login")
@@ -63,7 +69,12 @@ for user_cred in credentials:
     )
     login_button.click()
 
+<<<<<<< HEAD
     print(f"✅ Successfully logged in with ID: {username_text}")
+=======
+    #print(f"✅ Successfully logged in with ID: {username_text}")
+    print(f"\033[94m✅ Successfully logged in with ID: {username_text}\033[0m")
+>>>>>>> 1c38537 (Updated main.py)
 
     my_asba = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, '//*[@id="sideBar"]/nav/ul/li[8]/a'))
@@ -146,12 +157,22 @@ for user_cred in credentials:
     )
     pin_select.send_keys(pin_text)
 
+<<<<<<< HEAD
     final_apply = WebDriverWait(driver, 10).until(        #click on final apply
         EC.element_to_be_clickable((By.XPATH, '//*[@id="transactionPIN"] //*[@id="main"]/div/app-issue/div/wizard/div/wizard-step[2]/div[2]/div/form/div[2]/div/div/div/button[1]'))
     )
     final_apply.click()
 
     print(f"✅ Successfully applied for {company_name} IPO with {quantity} kitta for {username_text}")
+=======
+    final_apply = WebDriverWait(driver, 10).until(        #click on final apply //*[@id="main"]/div/app-issue/div/wizard/div/wizard-step[2]/div[2]/div/form/div[2]/div/div/div/button[1]
+       EC.element_to_be_clickable((By.XPATH, '//*[@id="main"]/div/app-issue/div/wizard/div/wizard-step[2]/div[2]/div/form/div[2]/div/div/div/button[1]'))
+    )
+    final_apply.click()
+
+    #print(f"✅ Successfully applied for {company_name} IPO with {quantity} kitta for {username_text}")
+    print(f"\033[92m✅ Successfully applied for {company_name} IPO with {quantity} kitta for {username_text}\033[0m")
+>>>>>>> 1c38537 (Updated main.py)
     
     logout = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, '/html/body/app-dashboard/header/div[2]/div/div/div/ul/li[1]'))
